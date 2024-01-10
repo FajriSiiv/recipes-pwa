@@ -7,7 +7,7 @@ export const getRecipeCategory = async () => {
 
   const data = await res.json();
 
-  return data;
+  return data.meals;
 };
 
 export const getRecipeById = async (idMeal: string | string[]) => {
@@ -18,4 +18,14 @@ export const getRecipeById = async (idMeal: string | string[]) => {
   const data = await res.json();
 
   return data.meals[0];
+};
+
+export const getSearchRecipes = async (searchQuery: any) => {
+  const res = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`
+  );
+
+  const data = await res.json();
+
+  return data.meals;
 };
